@@ -4,7 +4,7 @@ curl_retry_on_18() {
   local ec=18;
   local attempts=0;
   while (( ec == 18 && attempts++ < 3 )); do
-    curl "$@" # -C - would return code 33 if unsupported by server
+    curl -k "$@" # -C - would return code 33 if unsupported by server
     ec=$?
   done
   return $ec
