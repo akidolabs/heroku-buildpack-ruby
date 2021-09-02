@@ -122,7 +122,7 @@ s3_curl() {
   bucket="${2:+/${2}}/" # slashify the bucket
   remote="$(urlenc "${3}")" # if you don't, strange things may happen.
   stdopts="--connect-timeout 10 --fail --silent"
-  [[ $CURL_S3_DEBUG == true ]] && stdopts="${stdopts} --show-error --fail"
+  [[ $CURL_S3_DEBUG != true ]] && stdopts="${stdopts} --show-error --fail"
   case "${1}" in
    GET) arg="-o" inout="${4:--}" # stdout if no $4
 	;;
